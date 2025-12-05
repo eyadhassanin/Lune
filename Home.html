@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LUNE - Fine Dining</title>
+    <link rel="stylesheet" href="Home.css">
+</head>
+
+<body>
+    <nav class="col-12 col-md-12 col-sm-12" id="nav">
+        <div class="logoSection" id="logoSection">
+        <button class="logo" id="menu-toggle"><img
+                src="Lune.jpeg" /></button>
+
+    </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#first">Home</a></li>
+            <li><a href="Menu.html">Menu</a></li>
+            <li><a href="Gallery.html">Reservation</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+        <div class="toggle-container" onclick="toggleSwitch()">
+            <div class="toggle-ball">
+                <img src="https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252" id="ball"
+                    alt="Theme Icon">
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <section class="first col-12 col-md-12 col-sm-12" id="first">
+
+        <div class="main col-5 col-md-6 col-sm-10">
+            <p class="col-12 col-md-12 col-sm-12">Wide Options of Choice</p>
+            <h1 class="col-12 col-md-12 col-sm-12">Delicious Recipes</h1>
+            <p class="col-12 col-md-12 col-sm-12">“From wholesome breakfasts to indulgent desserts, our recipes are crafted to bring flavor and balance to your table.”
+            </p>
+            <a href="Menu.html" style="all: unset;" >
+                <button class="check col-sm-9">Check Our Menu</button>
+            </a>
+        </div>
+    </section>
+
+
+
+    <section id="about" class="about-section col-12 col-md-12 col-sm-12">
+        <div class="about-content col-4 col-md-6 col-sm-10">
+            <h2 class="col-12 col-md-12 col-sm-12">About Our Story</h2>
+            <p class="col-12 col-md-12 col-sm-12">
+                We started with a simple dream: to create a place where friends and families can come together, share meals, and make memories. Every dish we serve is prepared with care, using fresh ingredients and recipes that bring comfort and joy to the table.
+            </p>
+            <a href="Menu.html" style="all: unset;">
+            <button class="check col-sm-9">VIEW ALL MENU</button>
+            </a>
+        </div>
+        <div class="about-image">
+            <img src="meal.webp" alt="Solar System" />
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="form-container col-12 col-md-12 col-sm-12">
+        <div class="about col-5 col-md-7 col-sm-7">
+            <h2 class="col-12 col-md-12 col-sm-12">Reserve Your Seats to Confirm if You Come with Your Family</h2>
+            <p class="col-12 col-md-12 col-sm-12">
+                “Secure your reservation today and let us make your family gathering a smooth, delightful, and worry-free experience.”
+            </p>
+        </div>
+        <form class="form col-5 col-md-8 col-sm-9" id="myForm">
+            <input id="name" class="col-10 col-md-10 col-sm-10" type="text" placeholder="your name" />
+            <div id="nameError" class="error"></div>
+            <input id="email" class="col-10 col-md-10 col-sm-10" type="text" placeholder="your email address" />
+            <div id="emailError" class="error"></div>
+            <input id="phone" class="col-10 col-md-10 col-sm-10" type="text" placeholder="phone number" />
+            <div id="mobileerror" class="error"></div>
+            <input id="data" class="col-10 col-md-10 col-sm-10" type="datetime-local"
+                placeholder="select Date & time" />
+            <input class="submit" type="submit" value="Make Reservation" />
+        </form>
+    </section>
+
+
+
+
+
+
+    <section class="developer-section">
+        <div class="developer-container">
+            <div class="developer active">
+                <img src="data:image/jpeg;base64,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"
+                    alt="User" class="profile-pic">
+                <h3>Omar Gebril</h3>
+                <div class="stars">★★★★★</div>
+                <p>Frontend Developer</p>
+            </div>
+
+            <div class="developer">
+                <img src="data:image/jpeg;base64,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"
+                    alt="User" class="profile-pic">
+                <h3>Eyad Hassanin</h3>
+                <div class="stars">★★★★★</div>
+                <p>Frontend Developer</p>
+            </div>
+
+            <div class="developer">
+                <img src="data:image/jpeg;base64,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"
+                    alt="User" class="profile-pic">
+                <h3>Tarek Gohar</h3>
+                <div class="stars">★★★★★</div>
+                <p>Frontend Developer</p>
+            </div>
+
+            <div class="developer">
+                <img src="data:image/jpeg;base64,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"
+                    alt="User" class="profile-pic">
+                <h3>Finn</h3>
+                <div class="stars">★★★★★</div>
+                <p>Frontend Developer</p>
+            </div>
+
+            <div class="developer">
+                <img src="data:image/jpeg;base64,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"
+                    alt="User" class="profile-pic">
+                <h3>Dr. Kocsis Gergely</h3>
+                <div class="stars">★★★★★</div>
+                <p>Mentor</p>
+            </div>
+        </div>
+
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+
+
+
+<!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact us</h2>
+      <p class="lead">Say hello — we’d love to hear from you.</p>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <form id="contactForm">
+          <input id="name" class="field" type="text" placeholder="Your name" required>
+          <small class="error" id="nameError"></small>
+
+          <input id="email" class="field" type="email" placeholder="Your email" required>
+          <small class="error" id="emailError"></small>
+
+          <textarea id="message" class="field" placeholder="Your message" required></textarea>
+          <small class="error" id="messageError"></small>
+
+          <button class="btn btn-cta" type="submit">Send message</button>
+        </form>
+
+        <!-- Channels -->
+        <div class="card">
+          <h3>Our channels</h3>
+          <p style="color:#666;margin:.5rem 0 1rem">Follow updates, freebies, and events.</p>
+          <a href="#">Twitter / X</a>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+          <hr style="border:none;border-top:1px dashed #ccc;margin:16px 0">
+          <div style="color:#555">📍 Cairo, Egypt — Remote first</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-row">
+      <div>&copy; 2025 Your Company. All rights reserved.</div>
+      <div class="foot-links">
+        <a href="#">FAQ</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+
+  
+    <script src="Home.js"></script>
+</body>
+
+</html>
