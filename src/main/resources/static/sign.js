@@ -196,3 +196,77 @@ function addSignUpValidation() {
 
 // Initialize Sign In form validation on first load
 addSignInValidation();
+
+
+(function () {
+    var navigation = document.getElementById("nav");
+    var menuToggle = document.getElementById("menu-toggle");
+    var links = document.getElementById("nav-links");
+
+    if (navigation && menuToggle && links) {
+        menuToggle.addEventListener("click", function () {
+            links.classList.toggle("show");
+            if (links.classList.contains("show")) {
+                navigation.classList.add("SmallHeight");
+                navigation.classList.add("gap");
+            } else {
+                navigation.classList.remove("SmallHeight");
+                navigation.classList.remove("gap");
+            }
+        });
+    }
+})();
+
+// dark mode toggle (reuses your existing logic)
+function toggleSwitch() {
+    var ball = document.getElementById('ball');
+    document.body.classList.toggle('darkMode');
+
+    if (document.body.classList.contains("darkMode")) {
+        ball.src = "https://img.icons8.com/?size=100&id=54382&format=png&color=FA5252";
+    } else {
+        ball.src = "https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252";
+    }
+}
+
+// navbar auth logic: show Admin/Logout depending on localStorage.luneUser
+function setupAuthNavbar() {
+    var adminLi  = document.getElementById("admin-link");
+    var signinLi = document.getElementById("signin-link");
+    var logoutLi = document.getElementById("logout-link");
+
+    if (!adminLi || !signinLi || !logoutLi) return;
+
+    var stored = localStorage.getItem("luneUser");
+    if (!stored) {
+        adminLi.style.display  = "none";
+        logoutLi.style.display = "none";
+        signinLi.style.display = "inline-block";
+    } else {
+        try {
+            var user = JSON.parse(stored);
+
+            signinLi.style.display = "none";
+            logoutLi.style.display = "inline-block";
+
+            if (user && user.role === "ADMIN") {
+                adminLi.style.display = "inline-block";
+            } else {
+                adminLi.style.display = "none";
+            }
+        } catch (e) {
+            console.error("Failed to parse luneUser", e);
+            adminLi.style.display  = "none";
+            logoutLi.style.display = "none";
+            signinLi.style.display = "inline-block";
+        }
+    }
+
+    logoutLi.addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("luneUser");
+        window.location.href = "index.html";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", setupAuthNavbar);

@@ -5,111 +5,230 @@
     <title>LUNE Admin – Reservations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            background: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
+        body,
+        html {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            font-size: 10px;        /* same as index.html */
+            background-color: #000000;
+            color: #ffffff;
+            font-family: sans-serif;
         }
+
+        body.darkMode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
         h1 {
             color: #d4af37;
             text-align: center;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 2rem;
             background: #111;
         }
+
         th, td {
             border: 1px solid #333;
-            padding: 8px;
+            padding: 0.8rem;
             text-align: center;
+            font-size: 1.4rem;
         }
+
         th {
             background: #222;
         }
+
         input[type="text"], input[type="number"] {
             width: 95%;
-            padding: 4px;
+            padding: 0.4rem;
             background: #222;
             border: 1px solid #444;
             color: #fff;
+            font-size: 1.3rem;
         }
+
         button {
-            padding: 6px 10px;
-            margin: 2px;
+            padding: 0.6rem 1rem;
+            margin: 0.2rem;
             border: none;
             cursor: pointer;
-            border-radius: 4px;
-            font-size: 13px;
+            border-radius: 0.4rem;
+            font-size: 1.3rem;
         }
+
         .btn-save {
             background: #28a745;
             color: #fff;
         }
+
         .btn-delete {
             background: #dc3545;
             color: #fff;
         }
-        .top-bar {
+
+        /* ===== NAVBAR: EXACT SAME SIZING AS INDEX ===== */
+
+        nav {
+            position: fixed;
+            height: 7rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
+            z-index: 1000;
+            background-color: rgb(56, 56, 56);
+            border-bottom: .2rem solid whitesmoke;
+            gap: 50rem;
+            width: 100%;
         }
-        .top-bar a {
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
             color: #d4af37;
+            font-size: 2rem;
+            font-family: "Playfair Display", serif;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+
+        .logo img {
+            width: 6rem;
+            height: auto;
+        }
+
+        .toggle-container {
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+        }
+
+        .toggle-ball img {
+            width: 3rem;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            margin-right: 7rem;
+        }
+
+        .nav-links.show {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links li a {
+            color: rgb(247, 247, 247);
+            font-size: 1.5rem;
             text-decoration: none;
-            margin-left: 10px;
+            padding: 1rem;
+            border-radius: 2rem;
+        }
+
+        .nav-links li a:hover {
+            color: red;
+            border: .2rem solid red;
+        }
+
+        .gap {
+            gap: 15rem;
+        }
+
+        .page-content {
+            padding: 10rem 2rem 2rem 2rem;   /* under fixed nav */
+        }
+
+        @media screen and (max-width:700px) {
+            nav {
+                gap: 10rem;
+            }
+
+            .nav-links.show {
+                display: grid;
+                grid-template-columns: repeat(3, 30%);
+                gap: 2rem;
+                margin-right: 7rem;
+            }
         }
     </style>
 </head>
 <body>
-<div class="top-bar">
-    <h1>Reservations – Admin</h1>
-    <div>
-        <span id="adminEmail"></span>
-        <a href="#" id="logoutLink">Logout</a>
+
+<!-- navbar -->
+<nav class="col-12 col-md-12 col-sm-12" id="nav">
+    <div class="logoSection" id="logoSection">
+        <button class="logo" id="menu-toggle">
+            <img src="Lune.jpeg" />
+        </button>
     </div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#first">Home</a></li>
+        <li><a href="Menu.html">Menu</a></li>
+        <li><a href="Gallery.html">Reservation</a></li>
+        <li id="admin-link" style="display:none;">
+            <a href="admin-reservations.html">Admin Panel</a>
+        </li>
+        <li id="signin-link"><a href="signin.html">Sign In</a></li>
+        <li id="logout-link" style="display:none;"><a href="#">Logout</a></li>
+    </ul>
+    <div class="toggle-container" onclick="toggleSwitch()">
+        <div class="toggle-ball">
+            <img src="https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252"
+                 id="ball"
+                 alt="Theme Icon">
+        </div>
+    </div>
+</nav>
+
+<!-- Admin content -->
+<div class="page-content">
+    <h1>Reservations – Admin</h1>
+
+    <table id="reservationsTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Table #</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 </div>
 
-<table id="reservationsTable">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Table #</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- rows inserted by JS -->
-    </tbody>
-</table>
-
 <script>
-    // Basic admin check
-    const stored = localStorage.getItem("luneUser");
-    if (!stored) {
-        alert("Please sign in as admin.");
-        window.location.href = "/signin.html";
-    } else {
-        const user = JSON.parse(stored);
-        if (user.role !== "ADMIN") {
-            alert("Access denied. Admin only.");
-            window.location.href = "/index.html";
-        } else {
-            document.getElementById("adminEmail").textContent = user.email;
+    // ===== ACCESS GUARD: only admin can view =====
+    (function () {
+        var stored = localStorage.getItem("luneUser");
+        if (!stored) {
+            alert("Please sign in as admin.");
+            window.location.href = "signin.html";
+            return;
         }
-    }
-
-    document.getElementById("logoutLink").addEventListener("click", function (e) {
-        e.preventDefault();
-        localStorage.removeItem("luneUser");
-        window.location.href = "/signin.html";
-    });
+        try {
+            var user = JSON.parse(stored);
+            if (!user || user.role !== "ADMIN") {
+                alert("Access denied. Admin only.");
+                window.location.href = "index.html";
+            }
+        } catch (e) {
+            window.location.href = "signin.html";
+        }
+    })();
 
     const tbody = document.querySelector("#reservationsTable tbody");
 
@@ -121,7 +240,7 @@
                 alert("Failed to load reservations.");
                 return;
             }
-            const data = await res.json(); // list of reservations
+            const data = await res.json();
             data.forEach(addRow);
         } catch (err) {
             console.error(err);
@@ -221,6 +340,78 @@
     }
 
     loadReservations();
+
+    // ===== NAVBAR: toggle + theme + auth =====
+
+    (function () {
+        var navigation = document.getElementById("nav");
+        var menuToggle = document.getElementById("menu-toggle");
+        var links = document.getElementById("nav-links");
+
+        if (navigation && menuToggle && links) {
+            menuToggle.addEventListener("click", function () {
+                links.classList.toggle("show");
+                if (links.classList.contains("show")) {
+                    navigation.classList.add("gap");
+                } else {
+                    navigation.classList.remove("gap");
+                }
+            });
+        }
+    })();
+
+    function toggleSwitch() {
+        var ball = document.getElementById('ball');
+        document.body.classList.toggle('darkMode');
+
+        if (document.body.classList.contains("darkMode")) {
+            ball.src = "https://img.icons8.com/?size=100&id=54382&format=png&color=FA5252";
+        } else {
+            ball.src = "https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252";
+        }
+    }
+
+    function setupAuthNavbar() {
+        var adminLi  = document.getElementById("admin-link");
+        var signinLi = document.getElementById("signin-link");
+        var logoutLi = document.getElementById("logout-link");
+
+        if (!adminLi || !signinLi || !logoutLi) return;
+
+        var stored = localStorage.getItem("luneUser");
+        if (!stored) {
+            adminLi.style.display  = "none";
+            logoutLi.style.display = "none";
+            signinLi.style.display = "inline-block";
+        } else {
+            try {
+                var user = JSON.parse(stored);
+
+                signinLi.style.display = "none";
+                logoutLi.style.display = "inline-block";
+
+                if (user && user.role === "ADMIN") {
+                    adminLi.style.display = "inline-block";
+                } else {
+                    adminLi.style.display = "none";
+                }
+            } catch (e) {
+                console.error("Failed to parse luneUser", e);
+                adminLi.style.display  = "none";
+                logoutLi.style.display = "none";
+                signinLi.style.display = "inline-block";
+            }
+        }
+
+        logoutLi.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("luneUser");
+            window.location.href = "index.html";
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", setupAuthNavbar);
 </script>
+
 </body>
 </html>

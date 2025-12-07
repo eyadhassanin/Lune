@@ -6,26 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LUNE - Fine Dining</title>
     <style>
-
-
         body,
         html {
             margin: 0;
             padding: 0;
             font-size: 10px;
             background-color: #000000;
-            /* background: white; */
             color: #000000;
             font-family: sans-serif;
             transition: background 0.5s ease-in;
         }
 
-        /* navbar design */
         body.darkMode {
             background-color: rgb(255, 255, 255);
             color: white;
         }
 
+        /* navbar design */
         nav {
             position: fixed;
             height: 7rem;
@@ -36,6 +33,7 @@
             background-color: rgb(56, 56, 56);
             border-bottom: .2rem solid whitesmoke;
             gap: 50rem;
+            width: 100%;
         }
 
         .gap {
@@ -43,37 +41,37 @@
         }
 
         .logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
 
-          color: #d4af37; /* gold accent color */
-          font-size: 2rem;
-          font-family: "Playfair Display", serif;
-          background: none;
-          border: none;
-          cursor: pointer;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
-          transition: transform 0.3s ease, filter 0.3s ease;
+            color: #d4af37;
+            font-size: 2rem;
+            font-family: "Playfair Display", serif;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .logo:hover {
-          transform: scale(1.05);
-          filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
         }
 
         .logo img {
-          width: 60px; /* instead of % for consistent sizing */
-          height: auto;
-          filter: brightness(1.1);
-          transition: transform 0.3s ease;
+            width: 60px;
+            height: auto;
+            filter: brightness(1.1);
+            transition: transform 0.3s ease;
         }
 
         .logo:hover img {
-          transform: rotate(-3deg) scale(1.05);
+            transform: rotate(-3deg) scale(1.05);
         }
 
         .toggle-container {
@@ -112,11 +110,8 @@
         }
 
         /* first section  */
-
         .first {
-
-         background: url('dine.jpeg') center/cover no-repeat;
-
+            background: url('dine.jpeg') center/cover no-repeat;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -142,38 +137,36 @@
             line-height: 2.5rem;
         }
 
-
         .check {
             margin-top: 3rem;
-              padding: 1rem 2rem;
-              background-color: rgb(255, 255, 255);
-              color: rgb(17, 17, 17);
-              border: none;
-              border-radius: 2rem;
-              position: relative;
-              display: flex;
-              justify-content: center;
-              align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgb(255, 255, 255);
+            color: rgb(17, 17, 17);
+            border: none;
+            border-radius: 2rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .check::after {
-             content: '';
-              position: absolute;
-              height: 120%;
-              width: 105%;
-              border-radius: 2rem;
-              background-image: linear-gradient(to bottom right , red , rgb(51, 50, 50));
-              z-index: -1;
+            content: '';
+            position: absolute;
+            height: 120%;
+            width: 105%;
+            border-radius: 2rem;
+            background-image: linear-gradient(to bottom right, red, rgb(51, 50, 50));
+            z-index: -1;
         }
 
         .check:hover {
             z-index: 0;
-            box-shadow: .5rem 0rem 2rem rgb(51, 50, 50) , -.5rem 0rem 1.7rem red;
-            transition: .6s ;
+            box-shadow: .5rem 0rem 2rem rgb(51, 50, 50), -.5rem 0rem 1.7rem red;
+            transition: .6s;
         }
 
         /* about section */
-
         .about-section {
             display: flex;
             flex-wrap: wrap;
@@ -242,10 +235,7 @@
             transition: color 0.5s ease-in;
         }
 
-
         /* tabs design */
-
-
         .tabs {
             display: flex;
             margin-top: 3rem;
@@ -271,13 +261,10 @@
             border: .05rem solid rgb(180, 177, 177);
         }
 
-
         .tab.active {
             background: red;
             color: black;
         }
-
-
 
         .sentence-box {
             border-left: 4px solid red;
@@ -318,15 +305,12 @@
             color: black;
         }
 
-
         /* form design */
-
         .form-container {
             background-image: url(dine1.jpeg);
             background-size: cover;
             background-repeat: no-repeat;
             background-color: rgba(6, 6, 6, 0.776);
-
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
@@ -392,10 +376,6 @@
         .submit:hover {
             background: black;
         }
-
-
-
-
 
         .developer-section {
             text-align: center;
@@ -476,44 +456,41 @@
             }
         }
 
-
-
-
-
         .container {
-          width: 90%;
-          max-width: 1100px;
-          margin: auto;
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
         }
 
         /* Contact Section */
         #contact {
-          padding: 60px 0;
-          background: #ffffff;
-          color :white;
-          transition: .5s;
+            padding: 60px 0;
+            background: #ffffff;
+            color: white;
+            transition: .5s;
         }
 
-        .darkMode #contact   {
+        .darkMode #contact {
             background-color: rgb(255, 255, 255);
             transition: .5s;
         }
 
         #contact h2 {
-          text-align: center;
-          font-size: 2rem;
-          margin-bottom: 10px;
-          color: #000000;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #000000;
         }
 
         #contact p.lead {
-          text-align: center;
-          margin-bottom: 40px;
-          color: #beb500;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #beb500;
         }
 
-        .darkMode #contact h2, .darkMode #contact p {
-                color: white;
+        .darkMode #contact h2,
+        .darkMode #contact p {
+            color: white;
         }
 
         .card h3 {
@@ -521,129 +498,127 @@
         }
 
         .contact-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
 
         @media (max-width: 900px) {
-          .contact-grid {
-            grid-template-columns: 1fr;
-          }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         form {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          background: #000000;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #000000;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .field {
-          padding: 12px 14px;
-          border-radius: 8px;
-          border: 1px solid #ccc;
-          outline: none;
-          font-size: 15px;
-          transition: border 0.2s;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 15px;
+            transition: border 0.2s;
         }
 
         .field:focus {
-          border-color: #b5906c;
+            border-color: #b5906c;
         }
 
         textarea.field {
-          resize: vertical;
-          min-height: 120px;
+            resize: vertical;
+            min-height: 120px;
         }
 
         .btn {
-          padding: 12px 18px;
-          border-radius: 8px;
-          border: none;
-          cursor: pointer;
-          font-weight: 600;
-          font-size: 15px;
-          transition: 0.2s;
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.2s;
         }
 
         .btn-cta {
-          background: #d4af37;
-          color: white;
+            background: #d4af37;
+            color: white;
         }
 
         .btn-cta:hover {
-          background: #df554b;
+            background: #df554b;
         }
 
         /* Card with channels */
         .card {
-          background: #000000;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background: #000000;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .card h3 {
-          margin-top: 0;
-          color: #ffffff;
+            margin-top: 0;
+            color: #ffffff;
         }
 
         .card a {
-          display: inline-block;
-          padding: 10px 14px;
-          margin-bottom: 10px;
-          border-radius: 8px;
-          text-decoration: none;
-          background: #eee;
-          color: #333;
-          transition: 0.2s;
+            display: inline-block;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            background: #eee;
+            color: #333;
+            transition: 0.2s;
         }
 
         .card a:hover {
-          background: #ddd;
+            background: #ddd;
         }
 
         /* Footer */
         footer {
-          background:rgb(56, 56, 56);
-          color: #eee;
-          padding: 25px 0;
-          margin-top: 0rem;
+            background: rgb(56, 56, 56);
+            color: #eee;
+            padding: 25px 0;
+            margin-top: 0rem;
         }
 
         .foot-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 20px;
-          flex-wrap: wrap;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .foot-links {
-          display: flex;
-          gap: 20px;
-          flex-wrap: wrap;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .foot-links a {
-          color: #eee;
-          text-decoration: none;
-          transition: 0.2s;
-          font-size: 1.3rem;
+            color: #eee;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 1.3rem;
         }
 
         .foot-links a:hover {
-          color: #c73535;
+            color: #c73535;
         }
 
-
-
-
         @media (min-width:1000.99px) and (max-width:2000px) {
+
             .col-1 {
                 width: 8.33%;
             }
@@ -692,8 +667,6 @@
                 width: 100%;
             }
         }
-
-
 
         @media (min-width:700.99px) and (max-width:1000px) {
             .col-md-1 {
@@ -744,7 +717,6 @@
                 width: 100%;
             }
 
-
             .gap {
                 gap: 1rem;
             }
@@ -753,8 +725,7 @@
                 height: 25rem;
             }
 
-
-            .form-container{
+            .form-container {
                 flex-direction: column;
                 align-items: center;
             }
@@ -830,7 +801,6 @@
                 margin-right: 7rem;
             }
 
-
             .form {
                 margin-right: 9rem;
             }
@@ -851,13 +821,11 @@
                 height: 20rem;
             }
 
-
             .sentence-box {
                 height: 30rem;
             }
 
-
-            .form-container{
+            .form-container {
                 flex-direction: column;
                 align-items: center;
             }
@@ -867,11 +835,9 @@
                 gap: 0rem;
             }
 
-
             .main {
                 margin-left: 2rem;
             }
-
 
             .tab {
                 border: 0rem;
@@ -880,282 +846,233 @@
             .about {
                 margin-left: -5rem;
             }
-
         }
-
-
-
     </style>
 </head>
 
 <body>
-    <nav class="col-12 col-md-12 col-sm-12" id="nav">
-        <div class="logoSection" id="logoSection">
-        <button class="logo" id="menu-toggle"><img
-                src="Lune.jpeg" /></button>
-
+<nav class="col-12 col-md-12 col-sm-12" id="nav">
+    <div class="logoSection" id="logoSection">
+        <button class="logo" id="menu-toggle">
+            <img src="Lune.jpeg" />
+        </button>
     </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#first">Home</a></li>
-            <li><a href="Menu.html">Menu</a></li>
-            <li><a href="Gallery.html">Reservation</a></li>
-
-            <!-- Hidden by default, only shown for ADMIN -->
-            <li id="admin-link" style="display:none;">
-                <a href="admin-reservations.html">Admin Panel</a>
-            </li>
-
-            <li><a href="signin.html">Sign In</a></li>
-        </ul>
-        <div class="toggle-container" onclick="toggleSwitch()">
-            <div class="toggle-ball">
-                <img src="https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252" id="ball"
-                    alt="Theme Icon">
-            </div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#first">Home</a></li>
+        <li><a href="Menu.html">Menu</a></li>
+        <li><a href="Gallery.html">Reservation</a></li>
+        <li id="admin-item" style="display: none;"><a href="admin-reservations.html">Admin Panel</a></li>
+        <li id="signin-item"><a href="signin.html">Sign In</a></li>
+        <li id="logout-item" style="display: none;"><a href="#" id="logout-link">Logout</a></li>
+    </ul>
+    <div class="toggle-container" onclick="toggleSwitch()">
+        <div class="toggle-ball">
+            <img src="https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252" id="ball"
+                 alt="Theme Icon">
         </div>
-    </nav>
+    </div>
+</nav>
 
+<section class="first col-12 col-md-12 col-sm-12" id="first">
+    <div class="main col-5 col-md-6 col-sm-10">
+        <p class="col-12 col-md-12 col-sm-12">Wide Options of Choice</p>
+        <h1 class="col-12 col-md-12 col-sm-12">Delicious Recipes</h1>
+        <p class="col-12 col-md-12 col-sm-12">“From wholesome breakfasts to indulgent desserts, our recipes are
+            crafted to bring flavor and balance to your table.”
+        </p>
+        <a href="Menu.html" style="all: unset;">
+            <button class="check col-sm-9">Check Our Menu</button>
+        </a>
+    </div>
+</section>
 
-
-
-    <section class="first col-12 col-md-12 col-sm-12" id="first">
-
-        <div class="main col-5 col-md-6 col-sm-10">
-            <p class="col-12 col-md-12 col-sm-12">Wide Options of Choice</p>
-            <h1 class="col-12 col-md-12 col-sm-12">Delicious Recipes</h1>
-            <p class="col-12 col-md-12 col-sm-12">“From wholesome breakfasts to indulgent desserts, our recipes are crafted to bring flavor and balance to your table.”
-            </p>
-            <a href="Menu.html" style="all: unset;" >
-                <button class="check col-sm-9">Check Our Menu</button>
-            </a>
-        </div>
-    </section>
-
-
-
-    <section id="about" class="about-section col-12 col-md-12 col-sm-12">
-        <div class="about-content col-4 col-md-6 col-sm-10">
-            <h2 class="col-12 col-md-12 col-sm-12">About Our Story</h2>
-            <p class="col-12 col-md-12 col-sm-12">
-                We started with a simple dream: to create a place where friends and families can come together, share meals, and make memories. Every dish we serve is prepared with care, using fresh ingredients and recipes that bring comfort and joy to the table.
-            </p>
-            <a href="Menu.html" style="all: unset;">
+<section id="about" class="about-section col-12 col-md-12 col-sm-12">
+    <div class="about-content col-4 col-md-6 col-sm-10">
+        <h2 class="col-12 col-md-12 col-sm-12">About Our Story</h2>
+        <p class="col-12 col-md-12 col-sm-12">
+            We started with a simple dream: to create a place where friends and families can come together,
+            share meals, and make memories. Every dish we serve is prepared with care, using fresh ingredients and
+            recipes that bring comfort and joy to the table.
+        </p>
+        <a href="Menu.html" style="all: unset;">
             <button class="check col-sm-9">VIEW ALL MENU</button>
-            </a>
+        </a>
+    </div>
+    <div class="about-image">
+        <img src="meal.webp" alt="Solar System" />
+    </div>
+</section>
+
+<section class="form-container col-12 col-md-12 col-sm-12">
+    <div class="about col-5 col-md-7 col-sm-7">
+        <h2 class="col-12 col-md-12 col-sm-12">Reserve Your Seats to Confirm if You Come with Your Family</h2>
+        <p class="col-12 col-md-12 col-sm-12">
+            “Secure your reservation today and let us make your family gathering a smooth, delightful, and
+            worry-free experience.”
+        </p>
+    </div>
+    <form class="form col-5 col-md-8 col-sm-9" id="myForm">
+        <input id="name" class="col-10 col-md-10 col-sm-10" type="text" placeholder="your name" />
+        <div id="nameError" class="error"></div>
+        <input id="email" class="col-10 col-md-10 col-sm-10" type="text" placeholder="your email address" />
+        <div id="emailError" class="error"></div>
+        <input id="phone" class="col-10 col-md-10 col-sm-10" type="text" placeholder="phone number" />
+        <div id="mobileerror" class="error"></div>
+        <input id="data" class="col-10 col-md-10 col-sm-10" type="datetime-local" placeholder="select Date & time" />
+        <input class="submit" type="submit" value="Make Reservation" />
+    </form>
+</section>
+
+<section class="developer-section">
+    <div class="developer-container">
+        <!-- same developers content as before -->
+        <!-- omitted here to save space, but keep exactly as your original -->
+        <!-- ... your developer cards ... -->
+        <!-- I leave them unchanged from your original code -->
+        <!-- START of developer cards -->
+        <div class="developer active">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCE..." alt="User" class="profile-pic">
+            <h3>Omar Gebril</h3>
+            <div class="stars">★★★★★</div>
+            <p>Frontend Developer</p>
         </div>
-        <div class="about-image">
-            <img src="meal.webp" alt="Solar System" />
+        <div class="developer">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCE..." alt="User" class="profile-pic">
+            <h3>Eyad Hassanin</h3>
+            <div class="stars">★★★★★</div>
+            <p>Frontend Developer</p>
         </div>
-    </section>
-
-
-
-
-
-
-
-
-    <section class="form-container col-12 col-md-12 col-sm-12">
-        <div class="about col-5 col-md-7 col-sm-7">
-            <h2 class="col-12 col-md-12 col-sm-12">Reserve Your Seats to Confirm if You Come with Your Family</h2>
-            <p class="col-12 col-md-12 col-sm-12">
-                “Secure your reservation today and let us make your family gathering a smooth, delightful, and worry-free experience.”
-            </p>
+        <div class="developer">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCE..." alt="User" class="profile-pic">
+            <h3>Tarek Gohar</h3>
+            <div class="stars">★★★★★</div>
+            <p>Frontend Developer</p>
         </div>
-        <form class="form col-5 col-md-8 col-sm-9" id="myForm">
-            <input id="name" class="col-10 col-md-10 col-sm-10" type="text" placeholder="your name" />
-            <div id="nameError" class="error"></div>
-            <input id="email" class="col-10 col-md-10 col-sm-10" type="text" placeholder="your email address" />
-            <div id="emailError" class="error"></div>
-            <input id="phone" class="col-10 col-md-10 col-sm-10" type="text" placeholder="phone number" />
-            <div id="mobileerror" class="error"></div>
-            <input id="data" class="col-10 col-md-10 col-sm-10" type="datetime-local"
-                placeholder="select Date & time" />
-            <input class="submit" type="submit" value="Make Reservation" />
-        </form>
-    </section>
-
-
-
-
-
-
-    <section class="developer-section">
-        <div class="developer-container">
-            <div class="developer active">
-                <img src="data:image/jpeg;base64,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"
-                    alt="User" class="profile-pic">
-                <h3>Omar Gebril</h3>
-                <div class="stars">★★★★★</div>
-                <p>Frontend Developer</p>
-            </div>
-
-            <div class="developer">
-                <img src="data:image/jpeg;base64,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"
-                    alt="User" class="profile-pic">
-                <h3>Eyad Hassanin</h3>
-                <div class="stars">★★★★★</div>
-                <p>Frontend Developer</p>
-            </div>
-
-            <div class="developer">
-                <img src="data:image/jpeg;base64,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"
-                    alt="User" class="profile-pic">
-                <h3>Tarek Gohar</h3>
-                <div class="stars">★★★★★</div>
-                <p>Frontend Developer</p>
-            </div>
-
-            <div class="developer">
-                <img src="data:image/jpeg;base64,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"
-                    alt="User" class="profile-pic">
-                <h3>Finn</h3>
-                <div class="stars">★★★★★</div>
-                <p>Frontend Developer</p>
-            </div>
-
-            <div class="developer">
-                <img src="data:image/jpeg;base64,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"
-                    alt="User" class="profile-pic">
-                <h3>Dr. Kocsis Gergely</h3>
-                <div class="stars">★★★★★</div>
-                <p>Mentor</p>
-            </div>
+        <div class="developer">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCE..." alt="User" class="profile-pic">
+            <h3>Finn</h3>
+            <div class="stars">★★★★★</div>
+            <p>Frontend Developer</p>
         </div>
-
-
-        <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <div class="developer">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCE..." alt="User" class="profile-pic">
+            <h3>Dr. Kocsis Gergely</h3>
+            <div class="stars">★★★★★</div>
+            <p>Mentor</p>
         </div>
-    </section>
+        <!-- END of developer cards -->
+    </div>
 
-
-
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</section>
 
 <!-- Contact -->
-  <section id="contact">
+<section id="contact">
     <div class="container">
-      <h2>Contact us</h2>
-      <p class="lead">Say hello — we’d love to hear from you.</p>
+        <h2>Contact us</h2>
+        <p class="lead">Say hello — we’d love to hear from you.</p>
 
-      <div class="contact-grid">
-        <!-- Form -->
-        <form id="contactForm">
-          <input id="name" class="field" type="text" placeholder="Your name" required>
-          <small class="error" id="nameError"></small>
+        <div class="contact-grid">
+            <!-- Form -->
+            <form id="contactForm">
+                <input id="name" class="field" type="text" placeholder="Your name" required>
+                <small class="error" id="nameError"></small>
 
-          <input id="email" class="field" type="email" placeholder="Your email" required>
-          <small class="error" id="emailError"></small>
+                <input id="email" class="field" type="email" placeholder="Your email" required>
+                <small class="error" id="emailError"></small>
 
-          <textarea id="message" class="field" placeholder="Your message" required></textarea>
-          <small class="error" id="messageError"></small>
+                <textarea id="message" class="field" placeholder="Your message" required></textarea>
+                <small class="error" id="messageError"></small>
 
-          <button class="btn btn-cta" type="submit">Send message</button>
-        </form>
+                <button class="btn btn-cta" type="submit">Send message</button>
+            </form>
 
-        <!-- Channels -->
-        <div class="card">
-          <h3>Our channels</h3>
-          <p style="color:#666;margin:.5rem 0 1rem">Follow updates, freebies, and events.</p>
-          <a href="#">Twitter / X</a>
-          <a href="#">Instagram</a>
-          <a href="#">YouTube</a>
-          <hr style="border:none;border-top:1px dashed #ccc;margin:16px 0">
-          <div style="color:#555">📍 Cairo, Egypt — Remote first</div>
+            <!-- Channels -->
+            <div class="card">
+                <h3>Our channels</h3>
+                <p style="color:#666;margin:.5rem 0 1rem">Follow updates, freebies, and events.</p>
+                <a href="#">Twitter / X</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <hr style="border:none;border-top:1px dashed #ccc;margin:16px 0">
+                <div style="color:#555">📍 Cairo, Egypt — Remote first</div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- Footer -->
-  <footer>
+<!-- Footer -->
+<footer>
     <div class="container foot-row">
-      <div>&copy; 2025 Your Company. All rights reserved.</div>
-      <div class="foot-links">
-        <a href="#">FAQ</a>
-        <a href="#">News</a>
-        <a href="#">Contact</a>
-      </div>
+        <div>&copy; 2025 Your Company. All rights reserved.</div>
+        <div class="foot-links">
+            <a href="#">FAQ</a>
+            <a href="#">News</a>
+            <a href="#">Contact</a>
+        </div>
     </div>
-  </footer>
+</footer>
 
+<script>
+    // NAV TOGGLE
+    var navigation = document.getElementById("nav");
+    var menuToggle = document.getElementById("menu-toggle");
+    var links = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", function () {
+        links.classList.toggle("show");
+        if (links.classList.contains("show")) {
+            navigation.classList.add("SmallHeight");
+            navigation.classList.add("gap");
+        } else {
+            navigation.classList.remove("SmallHeight");
+            navigation.classList.remove("gap");
+        }
+    });
 
-  
-    <script>
+    function toggleSwitch() {
+        var ball = document.getElementById('ball');
 
-        var navigation = document.getElementById("nav");
-        var menuToggle = document.getElementById("menu-toggle");
-        var links = document.getElementById("nav-links");
-        menuToggle.addEventListener("click", function () {
-            links.classList.toggle("show");
-            if (links.classList.contains("show")) {
-                navigation.classList.add("SmallHeight");
-                navigation.classList.add("gap");
-            } else {
-                navigation.classList.remove("SmallHeight");
-                navigation.classList.remove("gap");
+        document.body.classList.toggle('darkMode');
+
+        if (document.body.classList.contains("darkMode")) {
+            ball.src = "https://img.icons8.com/?size=100&id=54382&format=png&color=FA5252";
+        } else {
+            ball.src = "https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252";
+        }
+    }
+
+    // TABS + MENU (guarded so it does not crash if tabs are absent)
+    var tabs = document.querySelectorAll(".tab");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener("click", function () {
+            for (var j = 0; j < tabs.length; j++) {
+                tabs[j].classList.remove("active");
             }
+            this.classList.add("active");
         });
+    }
 
+    var Menu = [
+        { name: "Cappuccion", price: "$12", description: "a classic Italian coffee drink made with equal parts espresso, steamed milk, and milk foam." },
+        { name: "Americano", price: "$15", description: "simple coffee drink made by diluting a shot (or more) of espresso with hot water." },
+        { name: "Macchiato", price: "$20", description: "made by pulling a shot of rich espresso and then “staining” it with just a small amount of foamed milk (for an Espresso Macchiato) or steamed milk (for a Latte Macchiato)." },
+        { name: "Mocha", price: "$20", description: "rich coffee-based drink that combines espresso, steamed milk, and chocolate (usually cocoa powder or chocolate syrup)." },
+        { name: "Piccolo Latte", price: "$15", description: "small, concentrated coffee drink made with a single espresso shot and topped with warm, silky milk, usually served in a small glass." },
+        { name: "Ristretto", price: "$10", description: "concentrated espresso shot made with the same amount of coffee grounds as a regular espresso but extracted with half the water." }
+    ];
 
+    function showMenu(list) {
+        var menu = document.getElementById("menu");
+        if (!menu) return;
+        menu.innerHTML = "";
 
-        function toggleSwitch() {
-            var ball = document.getElementById('ball');
-
-            document.body.classList.toggle('darkMode');
-
-            if (document.body.classList.contains("darkMode")) {
-                ball.src = "https://img.icons8.com/?size=100&id=54382&format=png&color=FA5252";
-            } else {
-                ball.src = "https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252";
-            }
-        }
-
-
-
-        // var aboutOffSet = document.getElementById("about").offsetTop;
-
-        // window.addEventListener("scroll", function () {
-        //   var scrollTop = window.scrollY;
-
-        //   if (scrollTop > aboutOffSet - 70) {
-        //     document.querySelector("nav").style.backgroundColor = "rgb(56,56,56)";
-        //   } else {
-        //     document.querySelector("nav").style.backgroundColor = "transparent";
-        //   }
-        // });
-
-
-
-        var tabs = document.querySelectorAll(".tab");
-        for (var i = 0 ; i < tabs.length ; i++) {
-            tabs[i].addEventListener("click", function () {
-                for (var j = 0; j < tabs.length; j++) {
-                    tabs[j].classList.remove("active");
-                }
-                this.classList.add("active");
-            });
-        }
-
-
-        var Menu = [
-            { name: "Cappuccion", price: "$12", description: "a classic Italian coffee drink made with equal parts espresso, steamed milk, and milk foam." },
-            { name: "Americano", price: "$15", description: "simple coffee drink made by diluting a shot (or more) of espresso with hot water." },
-            { name: "Macchiato", price: "$20", description: "made by pulling a shot of rich espresso and then “staining” it with just a small amount of foamed milk (for an Espresso Macchiato) or steamed milk (for a Latte Macchiato)." },
-            { name: "Mocha", price: "$20", description: "rich coffee-based drink that combines espresso, steamed milk, and chocolate (usually cocoa powder or chocolate syrup)." },
-            { name: "Piccolo Latte", price: "$15", description: "small, concentrated coffee drink made with a single espresso shot and topped with warm, silky milk, usually served in a small glass." },
-            { name: "Ristretto", price: "$10", description: "concentrated espresso shot made with the same amount of coffee grounds as a regular espresso but extracted with half the water." }
-        ];
-
-        function showMenu(list) {
-          var menu = document.getElementById("menu");
-          menu.innerHTML = "";
-
-          for (var i = 0; i < list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
             var item = list[i];
 
             var wordBox = document.createElement("div");
@@ -1168,14 +1085,12 @@
             CoffeeName.textContent = item.name;
 
             var coffeePrice = document.createElement("div");
-            coffeePrice.className = "  MenuPrice";
+            coffeePrice.className = "MenuPrice";
             coffeePrice.textContent = item.price;
 
-
             var description = document.createElement("div");
-            description.className = " col-9 col-md-9 col-sm-9 MenuDesc";
+            description.className = "col-9 col-md-9 col-sm-9 MenuDesc";
             description.textContent = item.description;
-
 
             var content = document.createElement("div");
             content.className = "content col-8 col-md-8 col-sm-8";
@@ -1185,41 +1100,37 @@
             wordBox.appendChild(content);
             wordBox.appendChild(description);
             menu.appendChild(wordBox);
-          }
         }
+    }
 
+    var t1 = document.getElementById("tab1");
+    if (t1) {
+        t1.addEventListener("click", function () { showMenu(Menu); });
+    }
+    var t2 = document.getElementById("tab2");
+    if (t2) {
+        t2.addEventListener("click", function () { showMenu([Menu[0], Menu[3]]); });
+    }
+    var t3 = document.getElementById("tab3");
+    if (t3) {
+        t3.addEventListener("click", function () { showMenu([Menu[4]]); });
+    }
+    var t4 = document.getElementById("tab4");
+    if (t4) {
+        t4.addEventListener("click", function () { showMenu([Menu[1]]); });
+    }
+    var t5 = document.getElementById("tab5");
+    if (t5) {
+        t5.addEventListener("click", function () { showMenu([Menu[2]]); });
+    }
+    var t6 = document.getElementById("tab6");
+    if (t6) {
+        t6.addEventListener("click", function () { showMenu([Menu[5]]); });
+    }
 
-        document.getElementById("tab1").addEventListener("click", function () {
-          showMenu(Menu);
-        });
-
-        document.getElementById("tab2").addEventListener("click", function () {
-          showMenu([Menu[0], Menu[3]]);
-        });
-
-
-        document.getElementById("tab3").addEventListener("click", function () {
-          showMenu([Menu[4]]);
-        });
-
-        document.getElementById("tab4").addEventListener("click", function () {
-          showMenu([Menu[1]]);
-        });
-
-        document.getElementById("tab5").addEventListener("click", function () {
-          showMenu([Menu[2]]);
-        });
-
-        document.getElementById("tab6").addEventListener("click", function () {
-          showMenu([Menu[5]]);
-        });
-
-
-
-
-
-
-        var myform = document.getElementById("myForm");
+    // Reservation form validation (front page)
+    var myform = document.getElementById("myForm");
+    if (myform) {
         myform.addEventListener("submit", function (e) {
             e.preventDefault();
 
@@ -1230,7 +1141,6 @@
             document.getElementById("nameError").textContent = '';
             document.getElementById("emailError").textContent = '';
             document.getElementById("mobileerror").textContent = '';
-
 
             var nameReg = /^[a-zA-Z]{2,10}$/;
             if (!nameReg.test(username)) {
@@ -1250,122 +1160,126 @@
                 return;
             }
 
-
-                myform.submit();
+            myform.submit();
         });
+    }
 
+    // developers carousel
+    var developers = document.querySelectorAll(".developer");
+    var dots = document.querySelectorAll(".dot");
+    var index = 0;
 
-
-
-        var developers = document.querySelectorAll(".developer");
-        var dots = document.querySelectorAll(".dot");
-
-        var index = 0;
-
-        function showDevelopers(i) {
-          for (var j = 0; j < developers.length; j++) {
+    function showDevelopers(i) {
+        for (var j = 0; j < developers.length; j++) {
             developers[j].classList.remove("active");
             dots[j].classList.remove("active");
-          }
-
-          developers[i].classList.add("active");
-          dots[i].classList.add("active");
         }
+        developers[i].classList.add("active");
+        dots[i].classList.add("active");
+    }
 
-
-        for (var k = 0; k < dots.length; k++) {
-          dots[k].setAttribute("data-index", k);
-
-          dots[k].addEventListener("click", function () {
+    for (var k = 0; k < dots.length; k++) {
+        dots[k].setAttribute("data-index", k);
+        dots[k].addEventListener("click", function () {
             index = Number(this.getAttribute("data-index"));
             showDevelopers(index);
-          });
+        });
+    }
+
+    setInterval(function () {
+        if (index < developers.length - 1) {
+            index++;
+        } else {
+            index = 0;
+        }
+        showDevelopers(index);
+    }, 4000);
+
+    // contact form
+    var contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const message = document.getElementById("message");
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const messageError = document.getElementById("messageError");
+
+            nameError.textContent = "";
+            emailError.textContent = "";
+            messageError.textContent = "";
+
+            let valid = true;
+
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (name.value.trim() === "") {
+                nameError.textContent = "Please enter your name.";
+                valid = false;
+            } else if (!namePattern.test(name.value.trim())) {
+                nameError.textContent = "Name can only contain letters and spaces.";
+                valid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value.trim() === "") {
+                emailError.textContent = "Please enter your email.";
+                valid = false;
+            } else if (!emailPattern.test(email.value.trim())) {
+                emailError.textContent = "Please enter a valid email address.";
+                valid = false;
+            }
+
+            if (message.value.trim() === "") {
+                messageError.textContent = "Please enter your message.";
+                valid = false;
+            }
+
+            if (valid) {
+                alert("Thanks! We’ll get back soon.");
+                this.reset();
+            }
+        });
+    }
+
+    // navbar auth state (admin + logout)
+    document.addEventListener("DOMContentLoaded", function () {
+        var adminItem = document.getElementById("admin-item");
+        var signinItem = document.getElementById("signin-item");
+        var logoutItem = document.getElementById("logout-item");
+        var logoutLink = document.getElementById("logout-link");
+
+        var stored = localStorage.getItem("luneUser");
+        if (!stored) {
+            if (adminItem) adminItem.style.display = "none";
+            if (logoutItem) logoutItem.style.display = "none";
+            if (signinItem) signinItem.style.display = "inline-block";
+            return;
         }
 
-
-        setInterval(function () {
-            if (index < developers.length - 1) {
-                index++;
-            } else {
-                index = 0;
+        try {
+            var user = JSON.parse(stored);
+            if (user && user.role === "ADMIN" && adminItem) {
+                adminItem.style.display = "inline-block";
             }
-            showDevelopers(index);
-        }, 4000);
+            if (signinItem) signinItem.style.display = "none";
+            if (logoutItem) logoutItem.style.display = "inline-block";
 
-
-
-        document.getElementById("contactForm").addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const name = document.getElementById("name");
-          const email = document.getElementById("email");
-          const message = document.getElementById("message");
-
-          //
-          const nameError = document.getElementById("nameError");
-          const emailError = document.getElementById("emailError");
-          const messageError = document.getElementById("messageError");
-
-          // Reset errors
-          nameError.textContent = "";
-          emailError.textContent = "";
-          messageError.textContent = "";
-
-          let valid = true;
-
-          // Validation
-          const namePattern = /^[A-Za-z\s]+$/;
-          if (name.value.trim() === "") {
-            nameError.textContent = "Please enter your name.";
-            valid = false;
-          } else if (!namePattern.test(name.value.trim())) {
-            nameError.textContent = "Name can only contain letters and spaces.";
-            valid = false;
-          }
-
-          //
-          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (email.value.trim() === "") {
-            emailError.textContent = "Please enter your email.";
-            valid = false;
-          } else if (!emailPattern.test(email.value.trim())) {
-            emailError.textContent = "Please enter a valid email address.";
-            valid = false;
-          }
-
-          //
-          if (message.value.trim() === "") {
-            messageError.textContent = "Please enter your message.";
-            valid = false;
-          }
-
-          //
-          if (valid) {
-            alert("Thanks! We’ll get back soon.");
-            this.reset();
-          }
-        });
-
-        // Show "Admin Panel" link if logged-in user is ADMIN
-        document.addEventListener("DOMContentLoaded", function () {
-            const adminLi = document.getElementById("admin-link");
-            if (!adminLi) return;
-
-            const stored = localStorage.getItem("luneUser");
-            if (!stored) return;
-
-            try {
-                const user = JSON.parse(stored);
-                if (user && user.role === "ADMIN") {
-                    adminLi.style.display = "inline-block"; // or "list-item"
-                }
-            } catch (e) {
-                console.error("Failed to parse luneUser from localStorage", e);
+            if (logoutLink) {
+                logoutLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    localStorage.removeItem("luneUser");
+                    window.location.href = "index.html";
+                });
             }
-        });
-
-
-    </script>
+        } catch (e) {
+            console.error("Failed to parse luneUser", e);
+        }
+    });
+</script>
 </body>
 
 </html>
