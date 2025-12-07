@@ -899,6 +899,12 @@
             <li><a href="#first">Home</a></li>
             <li><a href="Menu.html">Menu</a></li>
             <li><a href="Gallery.html">Reservation</a></li>
+
+            <!-- Hidden by default, only shown for ADMIN -->
+            <li id="admin-link" style="display:none;">
+                <a href="admin-reservations.html">Admin Panel</a>
+            </li>
+
             <li><a href="signin.html">Sign In</a></li>
         </ul>
         <div class="toggle-container" onclick="toggleSwitch()">
@@ -1338,6 +1344,24 @@
             alert("Thanks! We’ll get back soon.");
             this.reset();
           }
+        });
+
+        // Show "Admin Panel" link if logged-in user is ADMIN
+        document.addEventListener("DOMContentLoaded", function () {
+            const adminLi = document.getElementById("admin-link");
+            if (!adminLi) return;
+
+            const stored = localStorage.getItem("luneUser");
+            if (!stored) return;
+
+            try {
+                const user = JSON.parse(stored);
+                if (user && user.role === "ADMIN") {
+                    adminLi.style.display = "inline-block"; // or "list-item"
+                }
+            } catch (e) {
+                console.error("Failed to parse luneUser from localStorage", e);
+            }
         });
 
 
