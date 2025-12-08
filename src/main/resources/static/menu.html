@@ -1,459 +1,717 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Restaurant Menu</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #000000;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Restaurant Menu</title>
+    <style>
+        html {
+            font-size: 10px;
+        }
 
-    .section {
-      padding: 40px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+        }
 
-    .section h2 {
-      display: flex;
-      align-items: center;
-      font-size: 28px;
-      color: #fff;
-      margin-bottom: 20px;
-      justify-content: center;
-    }
+        body.darkMode {
+            background-color: #ffffff;
+            color: #000000;
+        }
 
-    .section h2 img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-    }
+        /* ===== NAVBAR (desktop default) ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 7rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgb(56, 56, 56);
+            border-bottom: 0.2rem solid whitesmoke;
+            width: 100%;
+        }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        /* logo left */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: #d4af37;
+            font-size: 2rem;
+            font-family: "Playfair Display", serif;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
 
-    .menu-item {
-      background: rgb(255, 248, 248);
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 15px;
-      text-align: center;
-    }
+        .logo img {
+            width: 6rem;
+            height: auto;
+            filter: brightness(1.1);
+            transition: transform 0.3s ease;
+        }
 
-    .menu-item img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.6));
+        }
 
-    .menu-item h3 {
-      margin: 10px 0 5px;
-      font-size: 20px;
-    }
+        .logo:hover img {
+            transform: rotate(-3deg) scale(1.05);
+        }
 
-    .menu-item p {
-      font-size: 14px;
-      color: #555;
-    }
+        /* nav links in one row (center/right) */
+        .nav-links {
+            display: flex;           /* always row on desktop */
+            list-style: none;
+            margin-right: 7rem;
+            gap: 3rem;
+        }
 
-    .price {
-      font-weight: bold;
-      font-size: 16px;
-      margin: 8px 0;
-    }
+        .nav-links li a {
+            color: rgb(247, 247, 247);
+            font-size: 1.5rem;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 2rem;
+        }
 
-    .quantity-control {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+        .nav-links li a:hover {
+            color: red;
+            border: 0.2rem solid red;
+        }
 
-    .quantity-control button {
-      width: 30px;
-      height: 30px;
-      border: none;
-      background: #222;
-      color: white;
-      font-size: 18px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+        /* theme toggle on the right */
+        .toggle-container {
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+        }
 
-    .quantity-control span {
-      margin: 0 10px;
-      font-size: 16px;
-      min-width: 20px;
-      display: inline-block;
-      text-align: center;
-    }
+        .toggle-ball img {
+            width: 3rem;
+            border-radius: 50%;
+        }
 
-    .add-to-cart {
-      background: rgb(219, 160, 0);
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+        /* ===== MOBILE BEHAVIOUR ONLY ===== */
+        @media (max-width: 700px) {
+            nav {
+                justify-content: center;
+                flex-direction: column;
+                gap: 1rem;
+                height: auto;
+                padding: 1rem 0;
+            }
 
-    .add-to-cart:hover {
-      background: #e65c00;
-    }
+            /* when collapsed: hide links */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                margin-right: 0;
+            }
 
-    #cart {
-      position: fixed;
-      right: 20px;
-      top: 150px;
-      background: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      width: 260px;
-    }
+            /* when user taps logo: show links as a grid/column */
+            .nav-links.show {
+                display: flex;
+            }
 
-    #cart h3 {
-      margin: 0 0 10px;
-    }
+            /* only affects mobile when menu is expanded */
+            .SmallHeight {
+                height: 27rem;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+        }
 
-    #cart-items > div {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
 
-    #cart strong {
-      display: block;
-      margin-top: 10px;
-    }
-    .header {
-  background: url("dine1.jpeg") center/cover no-repeat;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 25px;
-  font-family: Arial, sans-serif;
-  text-shadow: 2px 2px 4px black; 
-}
-  
- @media (max-width: 992px) {
-    .menu-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    #cart {
-      width: 220px;
-    }
-  }
+        /* ===== HEADER WITH IMAGE (kept, just moved down) ===== */
+        .header {
+            margin-top: 7rem; /* space for fixed navbar */
+            background: url("dine1.jpeg") center/cover no-repeat;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 25px;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px black;
+        }
 
-  @media (max-width: 600px) {
-    .menu-grid {
-      grid-template-columns: 1fr;
-    }
-    .header {
-      height: 150px;
-      font-size: 20px;
-    }
-    .menu-item img {
-      height: 150px;
-    }
-    #cart {
-      position: static;
-      margin: 20px auto;
-    }
-  }
+        .section {
+            padding: 40px;
+        }
 
-  </style>
+        .section h2 {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .section h2 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: rgb(255, 248, 248);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0 5px;
+            font-size: 20px;
+        }
+
+        .menu-item p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .quantity-control button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: #222;
+            color: white;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .quantity-control span {
+            margin: 0 10px;
+            font-size: 16px;
+            min-width: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .add-to-cart {
+            background: rgb(219, 160, 0);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #e65c00;
+        }
+
+        #cart {
+            position: fixed;
+            right: 20px;
+            top: 150px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            width: 260px;
+        }
+
+        #cart h3 {
+            margin: 0 0 10px;
+        }
+
+        #cart-items > div {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        #cart strong {
+            display: block;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            #cart {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                gap: 10rem;
+            }
+
+            .nav-links.show {
+                display: grid;
+                grid-template-columns: repeat(3, 30%);
+                gap: 4rem;
+                margin-right: 7rem;
+            }
+
+            .SmallHeight {
+                gap: 1rem;
+                height: 27rem;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                height: 150px;
+                font-size: 20px;
+            }
+            .menu-item img {
+                height: 150px;
+            }
+            #cart {
+                position: static;
+                margin: 20px auto;
+            }
+        }
+    </style>
 </head>
 <body>
- <header class="header">
-  <h1>🍴 Our Restaurant Menu</h1>
+
+<!-- NAVBAR (same structure as Gallery) -->
+<nav class="col-12 col-md-12 col-sm-12" id="nav">
+    <div class="logoSection" id="logoSection">
+        <button class="logo" id="menu-toggle">
+            <img src="Lune.jpeg" />
+        </button>
+    </div>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#first">Home</a></li>
+        <li><a href="Menu.html">Menu</a></li>
+        <li><a href="Gallery.html">Reservation</a></li>
+
+        <!-- Only visible for admins -->
+        <li id="admin-link" style="display:none;">
+            <a href="admin-reservations.html">Admin Panel</a>
+        </li>
+
+        <!-- Shown when NOT logged in -->
+        <li id="signin-link">
+            <a href="signin.html">Sign In</a>
+        </li>
+
+        <!-- Shown when logged in -->
+        <li id="logout-link" style="display:none;">
+            <a href="#">Logout</a>
+        </li>
+    </ul>
+    <div class="toggle-container" onclick="toggleSwitch()">
+        <div class="toggle-ball">
+            <img src="https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252"
+                 id="ball"
+                 alt="Theme Icon">
+        </div>
+    </div>
+</nav>
+
+<header class="header">
+    <h1>🍴 Our Restaurant Menu</h1>
 </header>
 
-  <!-- Starters -->
-  <section class="section">
+<!-- Starters -->
+<section class="section">
     <h2><img src="https://img.icons8.com/color/48/salad.png" alt="Starters icon"/> Starters</h2>
     <div class="menu-grid">
-      <div class="menu-item" data-price="6.99">
-        <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?q=80&w=800" alt="Bruschetta">
-        <h3>Salad</h3>
-        <p>Grilled bread with tomato, basil & garlic.</p>
-        <div class="price">$6.99</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="6.99">
+            <img src="https://images.unsplash.com/photo-1546793665-c74683f339c1?q=80&w=800" alt="Bruschetta">
+            <h3>Salad</h3>
+            <p>Grilled bread with tomato, basil & garlic.</p>
+            <div class="price">$6.99</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item" data-price="4.99">
-        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=800" alt="Tomato Soup">
-        <h3>Tomato Soup</h3>
-        <p>Creamy tomato soup with herbs.</p>
-        <div class="price">$4.99</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="4.99">
+            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=800" alt="Tomato Soup">
+            <h3>Tomato Soup</h3>
+            <p>Creamy tomato soup with herbs.</p>
+            <div class="price">$4.99</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item" data-price="7.50">
-        <img src="https://cdn.loveandlemons.com/wp-content/uploads/2024/12/caesar-salad.jpg" alt="Caesar Salad">
-        <h3>Caesar Salad</h3>
-        <p>Romaine, parmesan, croutons & Caesar dressing.</p>
-        <div class="price">$7.50</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="7.50">
+            <img src="https://cdn.loveandlemons.com/wp-content/uploads/2024/12/caesar-salad.jpg" alt="Caesar Salad">
+            <h3>Caesar Salad</h3>
+            <p>Romaine, parmesan, croutons & Caesar dressing.</p>
+            <div class="price">$7.50</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item" data-price="5.50">
-        <img src="https://thaicaliente.com/wp-content/uploads/2025/04/thai-fried-spring-rolls.jpg" alt="Spring Rolls">
-        <h3>Spring Rolls</h3>
-        <p>Crispy veggie rolls with sweet chili dip.</p>
-        <div class="price">$5.50</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="5.50">
+            <img src="https://thaicaliente.com/wp-content/uploads/2025/04/thai-fried-spring-rolls.jpg" alt="Spring Rolls">
+            <h3>Spring Rolls</h3>
+            <p>Crispy veggie rolls with sweet chili dip.</p>
+            <div class="price">$5.50</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item" data-price="7.99">
-        <img src="https://www.foodandwine.com/thmb/iCJRQfpnHKs7W2Fwn95HWKon1Ag=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cheesy-nachos-with-fried-eggs-and-giardiniera-XL-RECIPE0117-f2d8a41da5384f599fe61ecfa887cc95.jpg" alt="Nachos">
-        <h3>Cheesy Nachos</h3>
-        <p>Tortilla chips with melted cheese & jalapeños.</p>
-        <div class="price">$7.99</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="7.99">
+            <img src="https://www.foodandwine.com/thmb/iCJRQfpnHKs7W2Fwn95HWKon1Ag=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cheesy-nachos-with-fried-eggs-and-giardiniera-XL-RECIPE0117-f2d8a41da5384f599fe61ecfa887cc95.jpg" alt="Nachos">
+            <h3>Cheesy Nachos</h3>
+            <p>Tortilla chips with melted cheese & jalapeños.</p>
+            <div class="price">$7.99</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item" data-price="6.80">
-        <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/11/19/0/MW612_pork-dumplings_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1605802271825.webp" alt="Dumplings">
-        <h3>Dumplings</h3>
-        <p>Steamed dumplings with soy-ginger sauce.</p>
-        <div class="price">$6.80</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="6.80">
+            <img src="https://becs-table.com.au/wp-content/uploads/2023/11/Pot-sticker-dumpling.jpg" alt="Dumplings">
+            <h3>Dumplings</h3>
+            <p>Steamed dumplings with soy-ginger sauce.</p>
+            <div class="price">$6.80</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section class="section">
+<section class="section">
     <h2><img src="https://img.icons8.com/color/48/steak.png"/> Main Dishes</h2>
     <div class="menu-grid">
-      <div class="menu-item" data-price="10.99">
-        <img src="https://uk.ooni.com/cdn/shop/articles/20220211142645-margherita-9920_e41233d5-dcec-461c-b07e-03245f031dfe.jpg?v=1737105431" alt="Margherita Pizza">
-        <h3>Margherita Pizza</h3>
-        <p>Tomato, mozzarella, basil — the classic.</p>
-        <div class="price">$10.99</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="10.99">
+            <img src="https://uk.ooni.com/cdn/shop/articles/20220211142645-margherita-9920_e41233d5-dcec-461c-b07e-03245f031dfe.jpg?v=1737105431" alt="Margherita Pizza">
+            <h3>Margherita Pizza</h3>
+            <p>Tomato, mozzarella, basil — the classic.</p>
+            <div class="price">$10.99</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800" alt="Beef Burger">
-        <h3>Beef Burger</h3>
-        <p>Grilled beef patty, cheddar, lettuce, tomato.</p>
-        <div class="price">$9.50</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800" alt="Beef Burger">
+            <h3>Beef Burger</h3>
+            <p>Grilled beef patty, cheddar, lettuce, tomato.</p>
+            <div class="price">$9.50</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjHDp6F68GbTyFtCQlASsvymW8OUV5v_eFjA&s" alt="Spaghetti">
-        <h3>Spaghetti</h3>
-        <p>Slow-cooked beef ragu over pasta.</p>
-        <div class="price">$8.90</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjHDp6F68GbTyFtCQlASsvymW8OUV5v_eFjA&s" alt="Spaghetti">
+            <h3>Spaghetti</h3>
+            <p>Slow-cooked beef ragu over pasta.</p>
+            <div class="price">$8.90</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN9CLC-79KxxUgmbhkp3BpETCt9DBoZnm8wA&s" alt="Grilled Steak">
-        <h3>Grilled Steak</h3>
-        <p>Herb butter, roasted veggies.</p>
-        <div class="price">$14.20</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN9CLC-79KxxUgmbhkp3BpETCt9DBoZnm8wA&s" alt="Grilled Steak">
+            <h3>Grilled Steak</h3>
+            <p>Herb butter, roasted veggies.</p>
+            <div class="price">$14.20</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE2kXgxEL9TDN1euYjxi4IKnG5djSvHPGy3A&s" alt="Salmon Fillet">
-        <h3>Salmon Fillet</h3>
-        <p>Pan-seared salmon, lemon & dill.</p>
-        <div class="price">$13.50</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE2kXgxEL9TDN1euYjxi4IKnG5djSvHPGy3A&s" alt="Salmon Fillet">
+            <h3>Salmon Fillet</h3>
+            <p>Pan-seared salmon, lemon & dill.</p>
+            <div class="price">$13.50</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
 
-      <div class="menu-item">
-        <img src="https://www.onceuponachef.com/images/2011/02/chicken-tacos-11.jpg" alt="Chicken Tacos">
-        <h3>Chicken Tacos</h3>
-        <p>Soft tortillas, grilled chicken, salsa.</p>
-        <div class="price">$11.20</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item">
+            <img src="https://www.onceuponachef.com/images/2011/02/chicken-tacos-11.jpg" alt="Chicken Tacos">
+            <h3>Chicken Tacos</h3>
+            <p>Soft tortillas, grilled chicken, salsa.</p>
+            <div class="price">$11.20</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
     </div>
-  </section>
+</section>
 
-  
-  <section class="section">
+<section class="section">
     <h2><img src="https://img.icons8.com/color/48/cocktail.png" alt="Drinks icon"/> Drinks</h2>
     <div class="menu-grid">
-      <div class="menu-item" data-price="2.50">
-        <img src="https://i.redd.it/yyr6vtruhzbb1.jpg" alt="Cola">
-        <h3>Cola</h3>
-        <p>Chilled and sparkling.</p>
-        <div class="price">$2.50</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="2.50">
+            <img src="https://i.redd.it/yyr6vtruhzbb1.jpg" alt="Cola">
+            <h3>Cola</h3>
+            <p>Chilled and sparkling.</p>
+            <div class="price">$2.50</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="menu-item" data-price="3.50">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Orangejuice.jpg/1200px-Orangejuice.jpg" alt="Orange Juice">
-        <h3>Orange Juice</h3>
-        <p>Freshly squeezed.</p>
-        <div class="price">$3.50</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="3.50">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Orangejuice.jpg/1200px-Orangejuice.jpg" alt="Orange Juice">
+            <h3>Orange Juice</h3>
+            <p>Freshly squeezed.</p>
+            <div class="price">$3.50</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-   
-      <div class="menu-item" data-price="3.00">
-        <img src="https://images.squarespace-cdn.com/content/v1/5ed13dd3465af021e2c1342b/a5b1e544-ee89-4268-b9af-ab49e9cc7006/IMG_1986+%281%29.jpg" alt="Lemonade">
-        <h3>Lemonade</h3>
-        <p>Fresh lemon, a touch of sweetness.</p>
-        <div class="price">$3.00</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
-        </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-    </div>
-  </section>
 
- 
-  <section class="section">
+        <div class="menu-item" data-price="3.00">
+            <img src="https://images.squarespace-cdn.com/content/v1/5ed13dd3465af021e2c1342b/a5b1e544-ee89-4268-b9af-ab49e9cc7006/IMG_1986+%281%29.jpg" alt="Lemonade">
+            <h3>Lemonade</h3>
+            <p>Fresh lemon, a touch of sweetness.</p>
+            <div class="price">$3.00</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="section">
     <h2><img src="https://img.icons8.com/color/48/cake.png" alt="Desserts icon"/> Desserts</h2>
     <div class="menu-grid">
-      <div class="menu-item" data-price="5.99">
-        <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="Chocolate Cake">
-        <h3>Chocolate Cake</h3>
-        <p>Rich layered chocolate goodness.</p>
-        <div class="price">$5.99</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="5.99">
+            <img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/04/triple-chocolate-cake-4.jpg" alt="Chocolate Cake">
+            <h3>Chocolate Cake</h3>
+            <p>Rich layered chocolate goodness.</p>
+            <div class="price">$5.99</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="menu-item" data-price="3.90">
-        <img src="https://cookienameddesire.com/wp-content/uploads/2018/05/brownie-sundae.jpg" alt="Ice Cream">
-        <h3>Ice Cream Sundae</h3>
-        <p>3 scoops, toppings & sauce.</p>
-        <div class="price">$3.90</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="3.90">
+            <img src="https://cookienameddesire.com/wp-content/uploads/2018/05/brownie-sundae.jpg" alt="Ice Cream">
+            <h3>Ice Cream Sundae</h3>
+            <p>3 scoops, toppings & sauce.</p>
+            <div class="price">$3.90</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="menu-item" data-price="4.70">
-        <img src="https://www.jocooks.com/wp-content/uploads/2018/11/cheesecake-1-22.jpg" alt="Cheesecake">
-        <h3>Cheesecake</h3>
-        <p>Classic New York style.</p>
-        <div class="price">$4.70</div>
-        <div class="quantity-control">
-          <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+        <div class="menu-item" data-price="4.70">
+            <img src="https://www.jocooks.com/wp-content/uploads/2018/11/cheesecake-1-22.jpg" alt="Cheesecake">
+            <h3>Cheesecake</h3>
+            <p>Classic New York style.</p>
+            <div class="price">$4.70</div>
+            <div class="quantity-control">
+                <button class="btn-minus">-</button><span>0</span><button class="btn-plus">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-    
-      
-  </section>
+    </div>
+</section>
 
-  <div id="cart">
+<div id="cart">
     <h3>🛒 Cart</h3>
     <div id="cart-items">No items yet.</div>
     <strong>Total: $<span id="cart-total">0.00</span></strong>
-  </div>
+</div>
 
-  <script>
+<script>
     const cart = new Map();
 
     document.addEventListener('click', function (e) {
-      if (e.target.classList.contains('btn-plus')) {
-        const qtySpan = e.target.closest('.quantity-control').querySelector('span');
-        qtySpan.textContent = String((parseInt(qtySpan.textContent) || 0) + 1);
-      }
-      if (e.target.classList.contains('btn-minus')) {
-        const qtySpan = e.target.closest('.quantity-control').querySelector('span');
-        const next = Math.max(0, (parseInt(qtySpan.textContent) || 0) - 1);
-        qtySpan.textContent = String(next);
-      }
-
-      if (e.target.classList.contains('add-to-cart')) {
-        const card = e.target.closest('.menu-item');
-        const name = card.querySelector('h3').textContent.trim();
-        const price = parseFloat(card.getAttribute('data-price'));
-        const qtySpan = card.querySelector('.quantity-control span');
-        const qty = parseInt(qtySpan.textContent) || 0;
-        if (qty > 0) {
-          const existing = cart.get(name) || { qty: 0, price };
-          existing.qty += qty;
-          cart.set(name, existing);
-          qtySpan.textContent = '0';
-          renderCart();
+        if (e.target.classList.contains('btn-plus')) {
+            const qtySpan = e.target.closest('.quantity-control').querySelector('span');
+            qtySpan.textContent = String((parseInt(qtySpan.textContent) || 0) + 1);
         }
-      }
+        if (e.target.classList.contains('btn-minus')) {
+            const qtySpan = e.target.closest('.quantity-control').querySelector('span');
+            const next = Math.max(0, (parseInt(qtySpan.textContent) || 0) - 1);
+            qtySpan.textContent = String(next);
+        }
+
+        if (e.target.classList.contains('add-to-cart')) {
+            const card = e.target.closest('.menu-item');
+            const name = card.querySelector('h3').textContent.trim();
+            const price = parseFloat(card.getAttribute('data-price'));
+            const qtySpan = card.querySelector('.quantity-control span');
+            const qty = parseInt(qtySpan.textContent) || 0;
+            if (qty > 0) {
+                const existing = cart.get(name) || { qty: 0, price };
+                existing.qty += qty;
+                cart.set(name, existing);
+                qtySpan.textContent = '0';
+                renderCart();
+            }
+        }
     });
 
     function renderCart() {
-      const itemsDiv = document.getElementById('cart-items');
-      const totalSpan = document.getElementById('cart-total');
-      itemsDiv.innerHTML = '';
+        const itemsDiv = document.getElementById('cart-items');
+        const totalSpan = document.getElementById('cart-total');
+        itemsDiv.innerHTML = '';
 
-      var total = 0;
-      for (const [name, { qty, price }] of cart.entries()) {
-        const line = document.createElement('div');
-        const lineTotal = qty * price;
-        total += lineTotal;
-        line.textContent = `${qty} × ${name} — $${lineTotal.toFixed(2)}`;
-        itemsDiv.appendChild(line);
-      }
+        var total = 0;
+        for (const [name, { qty, price }] of cart.entries()) {
+            const line = document.createElement('div');
+            const lineTotal = qty * price;
+            total += lineTotal;
+            line.textContent = `${qty} × ${name} — $${lineTotal.toFixed(2)}`;
+            itemsDiv.appendChild(line);
+        }
 
-      if (cart.size === 0) {
-        itemsDiv.textContent = 'No items yet.';
-      }
-      totalSpan.textContent = total.toFixed(2);
+        if (cart.size === 0) {
+            itemsDiv.textContent = 'No items yet.';
+        }
+        totalSpan.textContent = total.toFixed(2);
     }
-  </script>
+
+    // ===== NAVBAR TOGGLE =====
+    (function () {
+        var navigation = document.getElementById("nav");
+        var menuToggle = document.getElementById("menu-toggle");
+        var links = document.getElementById("nav-links");
+
+        if (navigation && menuToggle && links) {
+            menuToggle.addEventListener("click", function () {
+                links.classList.toggle("show");
+                if (links.classList.contains("show")) {
+                    navigation.classList.add("SmallHeight");
+                    navigation.classList.add("gap");
+                } else {
+                    navigation.classList.remove("SmallHeight");
+                    navigation.classList.remove("gap");
+                }
+            });
+        }
+    })();
+
+    // ===== DARK MODE TOGGLE =====
+    function toggleSwitch() {
+        var ball = document.getElementById('ball');
+        document.body.classList.toggle('darkMode');
+
+        if (document.body.classList.contains("darkMode")) {
+            ball.src = "https://img.icons8.com/?size=100&id=54382&format=png&color=FA5252";
+        } else {
+            ball.src = "https://img.icons8.com/?size=100&id=GIywaBFJCJiI&format=png&color=FA5252";
+        }
+    }
+
+    // ===== AUTH NAVBAR (Admin / Signin / Logout) =====
+    function setupAuthNavbar() {
+        var adminLi  = document.getElementById("admin-link");
+        var signinLi = document.getElementById("signin-link");
+        var logoutLi = document.getElementById("logout-link");
+
+        if (!adminLi || !signinLi || !logoutLi) return;
+
+        var stored = localStorage.getItem("luneUser");
+        if (!stored) {
+            adminLi.style.display  = "none";
+            logoutLi.style.display = "none";
+            signinLi.style.display = "inline-block";
+        } else {
+            try {
+                var user = JSON.parse(stored);
+
+                signinLi.style.display = "none";
+                logoutLi.style.display = "inline-block";
+
+                if (user && user.role === "ADMIN") {
+                    adminLi.style.display = "inline-block";
+                } else {
+                    adminLi.style.display = "none";
+                }
+            } catch (e) {
+                console.error("Failed to parse luneUser", e);
+                adminLi.style.display  = "none";
+                logoutLi.style.display = "none";
+                signinLi.style.display = "inline-block";
+            }
+        }
+
+        logoutLi.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("luneUser");
+            window.location.href = "index.html";
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", setupAuthNavbar);
+</script>
 </body>
 </html>
